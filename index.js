@@ -76,7 +76,8 @@ document.getElementById("myForm").addEventListener("submit", function (e) {
       }, 5000);
       break;
     case "1":
-      readDataCalculator(contentUpload, 3.882);
+      const { tipoCambio } = e.target;
+      readDataCalculator(contentUpload, tipoCambio.value);
       setTimeout(() => {
         location.reload();
       }, 5000);
@@ -144,7 +145,7 @@ function roundToZero(number) {
   );
 }
 
-const calculatePayment = (originalValue, exchangeRate = 1) => {
+const calculatePayment = (originalValue, exchangeRate, isDollar) => {
   const dp = 12.3;
   const value = originalValue * exchangeRate;
   const di = roundToZero(value * (1.5 / 1000));
@@ -152,7 +153,7 @@ const calculatePayment = (originalValue, exchangeRate = 1) => {
   const vs = exchangeRate !== 1 ? value.toFixed(2) : null;
   const total = (dp + di).toFixed(1) + "0";
 
-  if (exchangeRate !== 1) {
+  if (isDollar) {
     return {
       dia: now.getDate(),
       mes: now.getMonth() + 1,
@@ -196,11 +197,11 @@ const readDataCalculator = (data, exchangeRate) => {
   output.forEach((pair) => {
     switch (pair[1]) {
       case "0":
-        const objS = calculatePayment(pair[2]);
+        const objS = calculatePayment(pair[2], exchangeRate, false);
         generate(calculadoraTemplate, pair[0] + ".docx", objS);
         break;
       case "1":
-        const objDo = calculatePayment(pair[2], exchangeRate);
+        const objDo = calculatePayment(pair[2], exchangeRate, true);
         generate(calculadoraTemplate, pair[0] + ".docx", objDo);
         break;
       default:
