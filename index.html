@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>TotalCheck - Operaciones</title>
+</head>
+
+<body class="bg-[#111827]">
+
+  <div class="w-full h-[calc(100vh)] flex justify-center items-center">
+    <form id="myForm">
+      <div class="mb-4">
+        <div class="flex justify-between">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-white">Opciones</label>
+            <button id="dropdownDefaultButton"
+              class="text-white bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center bg-blue-600 hover:bg-blue-800 focus:ring-blue-800 mb-2"
+              type="button">Seleccionar<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <div id="dropdown" class="z-10 hidden absolute mt-1 w-44 bg-gray-700 rounded-lg shadow-lg">
+              <ul class="py-2 text-sm text-gray-200">
+                <li>
+                  <a class="cursor-pointer block px-4 py-2 hover:bg-gray-600 hover:text-white" data-value="0">Imprimir
+                    Datos</a>
+                </li>
+                <li>
+                  <a class="cursor-pointer block px-4 py-2 hover:bg-gray-600 hover:text-white"
+                    data-value="1">Calculadora Registral</a>
+                </li>
+                <li>
+                  <a class="cursor-pointer block px-4 py-2 hover:bg-gray-600 hover:text-white" data-value="2">Buscar
+                    Placas</a>
+                </li>
+                <li>
+                  <a class="cursor-pointer block px-4 py-2 hover:bg-gray-600 hover:text-white" data-value="3">Buscar
+                    Inscritos</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-white">Tipo de cambio (SUNARP)</label>
+            <input type="text" name="tipoCambio"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="3.765" required disabled />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center w-full drag-area">
+        <label
+          class="flex flex-col items-center justify-center w-100 h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+            </svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 px-10" id="text">
+              <span class="font-semibold">Haga clic para cargar</span> o
+              arrastre y suelte el archivo
+            </p>
+          </div>
+          <input id="input-file" type="file" class="hidden" name="input-file" />
+        </label>
+      </div>
+
+      <div class="block flex items- mt-4">
+        <button type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-blue-800">Procesar</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.45.0/docxtemplater.js"></script>
+  <script src="https://unpkg.com/pizzip@3.1.6/dist/pizzip.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+  <script src="https://unpkg.com/pizzip@3.1.6/dist/pizzip-utils.js"></script>
+  <script src="./index.js"></script>
+
+</body>
+
+</html>
